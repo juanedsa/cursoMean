@@ -1,0 +1,14 @@
+{
+  "name": "api-restful-favoritos",
+  "version": "1.0.0",
+  "description": "Api Restful para favoritos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Salazar",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
