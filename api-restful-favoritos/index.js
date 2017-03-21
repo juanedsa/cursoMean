@@ -1,8 +1,14 @@
 'use strict'
 
 var express = require('express');
-var app = express();
+var bodyParser = require('body-parser');
 
-app.listen(3678, function() {
-    console.log('Api Restful favoritos arrancado en http://localhost:3678');
+var app = express();
+var port = process.env.PORT || 3678;
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.listen(port, function() {
+    console.log(`Api Restful favoritos arrancado en http://localhost:${port}`);
 });
