@@ -14,13 +14,27 @@ function prueba(req, res) {
 function getFavorito(req, res) {
     var favoritoId = req.params.id;
 
-    res.status(200).send({
-        data: favoritoId
+    Favorito.findById(favoritoId, function (err, favorito) {
+        console.log(err);
+        if (err) {
+            res.status(500).send({
+                message: 'Error al consultar el favorito'
+            });
+        }
+
+        if (!favorito) {
+            res.status(404).send({
+                message: 'No hay marcador'
+            });
+        }
+
+        res.status(200).send({
+            favorito: favorito
+        });
     });
 }
 
 function getFavoritos(req, res) {
-
     Favorito.find({}).sort('-_id').exec((err, favoritos) => {
         if (err) {
             res.status(500).send({
@@ -38,7 +52,6 @@ function getFavoritos(req, res) {
             favoritos: favoritos
         });
     });
-
 }
 
 function saveFavorito(req, res) {
@@ -59,9 +72,7 @@ function saveFavorito(req, res) {
         res.status(200).send({
             favorito: favoritoStored
         });
-
     });
-
 }
 
 function updateFavorito(req, res) {
