@@ -19,17 +19,17 @@ function getFavorito(req, res) {
             res.status(500).send({
                 message: 'Error al consultar el favorito'
             });
+        } else {
+            if (!favorito) {
+                res.status(404).send({
+                    message: 'No hay marcador'
+                });
+            } else {
+                res.status(200).send({
+                    favorito: favorito
+                });
+            }
         }
-
-        if (!favorito) {
-            res.status(404).send({
-                message: 'No hay marcador'
-            });
-        }
-
-        res.status(200).send({
-            favorito: favorito
-        });
     });
 }
 
@@ -39,17 +39,17 @@ function getFavoritos(req, res) {
             res.status(500).send({
                 message: 'Error al consultar todos los favoritos'
             });
+        } else {
+            if (!favoritos) {
+                res.status(404).send({
+                    message: 'No hay marcadores'
+                });
+            } else {
+                res.status(200).send({
+                    favoritos: favoritos
+                });
+            }
         }
-
-        if (!favoritos) {
-            res.status(404).send({
-                message: 'No hay marcadores'
-            });
-        }
-
-        res.status(200).send({
-            favoritos: favoritos
-        });
     });
 }
 
@@ -66,11 +66,11 @@ function saveFavorito(req, res) {
             res.status(500).send({
                 message: 'Error al guardar el favorito'
             });
+        } else {
+            res.status(200).send({
+                favorito: favoritoStored
+            });
         }
-
-        res.status(200).send({
-            favorito: favoritoStored
-        });
     });
 }
 
@@ -83,12 +83,11 @@ function updateFavorito(req, res) {
             res.status(500).send({
                 message: 'Error al actualizar el favorito'
             });
+        } else {
+            res.status(200).send({
+                favorito: favoritoUpdated
+            });
         }
-
-        res.status(200).send({
-            favorito: favoritoUpdated
-        });
-
     });
 }
 
@@ -100,16 +99,13 @@ function deleteFavorito(req, res) {
             res.status(500).send({
                 message: 'Error al eliminar el favorito'
             });
+        } else {
+            res.status(200).send({
+                favorito: favoritoDeleted
+            });
         }
-
-        res.status(200).send({
-            favorito: favoritoDeleted
-        });
     });
-
 }
-
-
 
 module.exports = {
     prueba,
