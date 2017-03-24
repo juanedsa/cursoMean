@@ -15,7 +15,6 @@ function getFavorito(req, res) {
     var favoritoId = req.params.id;
 
     Favorito.findById(favoritoId, function (err, favorito) {
-        console.log(err);
         if (err) {
             res.status(500).send({
                 message: 'Error al consultar el favorito'
@@ -76,7 +75,21 @@ function saveFavorito(req, res) {
 }
 
 function updateFavorito(req, res) {
-    var params = req.body;
+    var favoritoId = req.params.id;
+    var update = req.body;
+
+    Favorito.findByIdAndUpdate(favoritoId, update, (err, favoritoUpdated) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error al actualizar el favorito'
+            });
+        }
+        
+        res.status(200).send({
+            favorito: favoritoUpdated
+        });
+
+    });
 
     res.status(200).send({
         favorito: params
