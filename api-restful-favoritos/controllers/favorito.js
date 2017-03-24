@@ -84,25 +84,29 @@ function updateFavorito(req, res) {
                 message: 'Error al actualizar el favorito'
             });
         }
-        
+
         res.status(200).send({
             favorito: favoritoUpdated
         });
 
     });
-
-    res.status(200).send({
-        favorito: params
-    });
-
 }
 
 function deleteFavorito(req, res) {
     var favoritoId = req.params.id;
 
-    res.status(200).send({
-        data: favoritoId
+    Favorito.findByIdAndRemove(favoritoId, (err, favoritoDeleted) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error al eliminar el favorito'
+            });
+        }
+
+        res.status(200).send({
+            favorito: favoritoDeleted
+        });
     });
+
 }
 
 
