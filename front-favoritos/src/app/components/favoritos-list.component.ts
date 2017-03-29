@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './views/home.html'
+  selector: 'app-favoritos-list',
+  templateUrl: '../views/favoritos-list.html'
 })
-export class AppComponent {
+export class FavoritosListComponent {
   public title: string;
 
   constructor() {
