@@ -8,6 +8,6 @@ export class FavoritosListComponent {
   public title: string;
 
   constructor() {
-    this.title = 'app Favoritos!';
+    this.title = 'Listado de Marcadores';
   }
 }

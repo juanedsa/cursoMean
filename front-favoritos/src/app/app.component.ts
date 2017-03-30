@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title: string;
+  public description: string;
 
   constructor() {
     this.title = 'app Favoritos!';
+    this.description = 'Aplicación web SPA con Angular 2 para gestionar favoritos online';
   }
 }
